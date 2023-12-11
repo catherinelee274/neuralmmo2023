@@ -102,7 +102,7 @@ env.close()
 ### REAL 
 
 @dataclass
-class CleanPuffeRL:
+class VanillaPolicyGradient:
     env_creator: callable = None
     env_creator_kwargs: dict = None
     agent: nn.Module = None

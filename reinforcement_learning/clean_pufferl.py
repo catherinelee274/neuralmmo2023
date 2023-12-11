@@ -322,7 +322,7 @@ class CleanPuffeRL:
                     actions,
                     logprob,
                     value,
-                    data.next_lstm_state[buf],
+                    data.next_lstm_state[buf], #lstm here ?
                 ) = self.policy_pool.forwards(
                     o.to(self.device),
                     data.next_lstm_state[buf],
@@ -528,7 +528,7 @@ class CleanPuffeRL:
         # Optimizing the policy and value network
         train_time = time.time()
         clipfracs = []
-        for epoch in range(update_epochs):
+        for epoch in range(update_epochs): #epoch
             lstm_state = None
             for mb in range(num_minibatches):
                 mb_obs = b_obs[mb].to(self.device)
@@ -547,7 +547,7 @@ class CleanPuffeRL:
                     ) = self.agent.get_action_and_value(
                         mb_obs, state=lstm_state, done=b_dones[mb], action=mb_actions
                     )
-                    lstm_state = (lstm_state[0].detach(), lstm_state[1].detach())
+                    lstm_state = (lstm_state[0].detach(), lstm_state[1].detach()) # lstm
                 else:
                     _, newlogprob, entropy, newvalue = self.agent.get_action_and_value(
                         mb_obs.reshape(
