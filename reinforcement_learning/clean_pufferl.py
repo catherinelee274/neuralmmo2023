@@ -289,7 +289,9 @@ class CleanPuffeRL:
                 break
 
             start = time.time()
-            o, r, d, i = self.buffers[buf].recv()
+            o, r, d, i = self.buffers[buf].recv() # obs, rewards, dones, infos
+            print("dones:", d)
+            print("infos", i)
             env_step_time += time.time() - start
 
             i = self.policy_pool.update_scores(i, "return")
@@ -510,6 +512,7 @@ class CleanPuffeRL:
                     + gamma * nextvalues * nextnonterminal
                     - data.values[i]
                 )
+                print(delta)
                 advantages[t] = lastgaelam = (
                     delta + gamma * gae_lambda * nextnonterminal * lastgaelam
                 )
@@ -548,6 +551,7 @@ class CleanPuffeRL:
                         mb_obs, state=lstm_state, done=b_dones[mb], action=mb_actions
                     )
                     lstm_state = (lstm_state[0].detach(), lstm_state[1].detach()) # lstm
+                    print("lstm_state:", lstm_state)
                 else:
                     _, newlogprob, entropy, newvalue = self.agent.get_action_and_value(
                         mb_obs.reshape(
@@ -595,6 +599,7 @@ class CleanPuffeRL:
                 else:
                     v_loss = 0.5 * ((newvalue - mb_returns) ** 2).mean()
 
+                # loss here 
                 entropy_loss = entropy.mean()
                 loss = pg_loss - ent_coef * entropy_loss + v_loss * vf_coef
 
@@ -617,6 +622,7 @@ class CleanPuffeRL:
                 nn.utils.clip_grad_norm_(self.agent.parameters(), max_grad_norm)
                 self.optimizer.step()
 
+            # kl divergence ?
             if target_kl is not None:
                 if approx_kl > target_kl:
                     break
