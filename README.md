@@ -1,4 +1,4 @@
-# neuralmmo2023
+# Neural MMO Competition 2023
 
 ## Test that training runs
 python train.py --local-mode true
