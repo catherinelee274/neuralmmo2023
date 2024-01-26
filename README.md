@@ -23,3 +23,12 @@ NMMO Baseline Repository:
 │   └── policy.py --> Your policy goes here
 ├── requirements.txt
 └── train.py --> Train your policy here
+
+
+## Future 
+- inference with
+- https://engineering.linkedin.com/teams/data/data-infrastructure/machine-learning-infrastructure
+- https://www.linkedin.com/pulse/machine-learning-platforms-ai-lifecycle-management-mark-mondoka-holtc/
+- FastTransformers
+- Deepspeed
+- https://www.tensorflow.org/tfx
