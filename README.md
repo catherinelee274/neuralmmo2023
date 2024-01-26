@@ -26,9 +26,10 @@ NMMO Baseline Repository:
 
 
 ## Future 
-- inference with
+- inference with apache beam
 - https://engineering.linkedin.com/teams/data/data-infrastructure/machine-learning-infrastructure
 - https://www.linkedin.com/pulse/machine-learning-platforms-ai-lifecycle-management-mark-mondoka-holtc/
 - FastTransformers
 - Deepspeed
 - https://www.tensorflow.org/tfx
+- Ray, KubeFlow or W&B
