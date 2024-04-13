@@ -18,10 +18,15 @@ python evaluate.py -p <YOUR_DIR> -r
 
 
 NMMO Baseline Repository:
+
 ├── reinforcement_learning
+
 │   ├── config.py
+
 │   └── policy.py --> Your policy goes here
+
 ├── requirements.txt
+
 └── train.py --> Train your policy here
 
 
